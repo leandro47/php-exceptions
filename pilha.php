@@ -12,14 +12,15 @@ function funcao1()
     echo 'Saindo da função 1' . PHP_EOL;
 }
 
+/**
+ * @throws RuntimeException
+ *
+ * @return void
+ */
 function funcao2()
 {
     echo 'Entrei na função 2' . PHP_EOL;
-    
-    $exception = new RuntimeException();
-    
-    throw $exception;
-    
+    throw  new RuntimeException();
     echo 'Saindo da função 2' . PHP_EOL;
 }
 
