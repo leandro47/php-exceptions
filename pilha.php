@@ -7,6 +7,7 @@ function funcao1()
         funcao2();
     } catch (RuntimeException | DivisionByZeroError $e) {
         echo $e->getMessage() . PHP_EOL;
+        throw new RuntimeException('exceção tratada', 500, $e);
     }
     echo 'Saindo da função 1' . PHP_EOL;
 }
@@ -14,15 +15,18 @@ function funcao1()
 function funcao2()
 {
     echo 'Entrei na função 2' . PHP_EOL;
-    for ($i = 1; $i <= 5; $i++) {
-        echo $i . PHP_EOL;
-    }
-    $divisao =  intdiv(5, 0);
-    $fixedArr = new SplFixedArray(2);
-    $fixedArr[3] = 'valor';
+    
+    $exception = new RuntimeException();
+    
+    throw $exception;
+    
     echo 'Saindo da função 2' . PHP_EOL;
 }
 
 echo 'Iniciando o programa principal' . PHP_EOL;
-funcao1();
+try {
+    funcao1();
+} catch (RuntimeException $e) {
+    echo 'alguma coisa deu pau' . PHP_EOL;
+}
 echo 'Finalizando o programa principal' . PHP_EOL;
