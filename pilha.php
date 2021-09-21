@@ -3,7 +3,11 @@
 function funcao1()
 {
     echo 'Entrei na função 1' . PHP_EOL;
-    funcao2();
+    try {
+        funcao2();
+    } catch (RuntimeException | DivisionByZeroError $e) {
+        echo $e->getMessage() . PHP_EOL;
+    }
     echo 'Saindo da função 1' . PHP_EOL;
 }
 
@@ -13,6 +17,9 @@ function funcao2()
     for ($i = 1; $i <= 5; $i++) {
         echo $i . PHP_EOL;
     }
+    $divisao =  intdiv(5, 0);
+    $fixedArr = new SplFixedArray(2);
+    $fixedArr[3] = 'valor';
     echo 'Saindo da função 2' . PHP_EOL;
 }
 
