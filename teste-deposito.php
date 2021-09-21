@@ -20,7 +20,6 @@ try {
     echo $e->getMessage() . PHP_EOL;
 }
 
-
 try {
     $contaCorrente->deposita(-100);
 } catch (\Exception $e) {
